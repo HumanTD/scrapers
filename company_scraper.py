@@ -45,7 +45,7 @@ def fetch_jobs(location, role, page):
     return jobs_dict
 
 role=""
-location = "united-states"
+location = "mumbai"
 max_pages = 40
 i = 0
 good_page_count = 0
