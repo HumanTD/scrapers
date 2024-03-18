@@ -45,13 +45,17 @@ def fetch_jobs(location, role, page):
     return jobs_dict
 
 role=""
-location = "mumbai"
+location = input("Enter location: ")
 max_pages = 40
 i = 0
 good_page_count = 0
+error_count = []
 
 while i < max_pages:
     if(max_pages > 250):
+        break
+
+    if(len(error_count) > 10):
         break
     jobs = fetch_jobs(location, role, i)
     i += 1
@@ -59,6 +63,9 @@ while i < max_pages:
     if not jobs:
         good_page_count -= 1
         max_pages += 1
+        error_count.append(i)
+    else:
+        error_count = []
     print(f"Page {i} done")
 
 print(f"Good page count: {good_page_count}")
